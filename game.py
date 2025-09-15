@@ -6,9 +6,9 @@ player_score = 0
 ai_score = 0
 
 for i in range(5):
+    print(f"Round {i+1}")
+    player_move = input("Enter r, p, s: ").strip().lower()
     while True:
-        print(f"Round {i+1}")
-        player_move = input("Enter r, p, s: ").strip().lower()
         print()
         if player_move not in comp_moves:
             print("Invalid input.")
