@@ -1,14 +1,25 @@
 import random
 
-comp_moves = ["r", "s", "p"]
-ai_choice = random.choice(comp_moves)
+def convert_letter_to_word(letter):
+    if letter == "r":
+        return "rock"
+    elif letter == "s":
+        return "scissors"
+    elif letter == "p":
+        return "paper"
+
+def get_valid_input():
+    pass
+
 player_score = 0
 ai_score = 0
 
 for i in range(5):
-    print(f"Round {i+1}")
-    player_move = input("Enter r, p, s: ").strip().lower()
+    comp_moves = ["r", "s", "p"]
+    ai_choice = random.choice(comp_moves)
     while True:
+        print(f"Round {i+1}")
+        player_move = input("Enter r, p, s: ").strip().lower()
         print()
         if player_move not in comp_moves:
             print("Invalid input.")
@@ -16,20 +27,9 @@ for i in range(5):
         else:
             break
 
-    if player_move == "r":
-        player_move = "rock"
-    elif player_move == "s":
-        player_move = "scissors"
-    elif player_move == "p":
-        player_move = "paper"
-
-    if ai_choice == "p":
-        ai_choice = "paper"
-    elif ai_choice == "s":
-        ai_choice = "scissors"
-    elif ai_choice == "r":
-        ai_choice = "rock"
-
+    
+    ai_choice = convert_letter_to_word(ai_choice)
+    player_move = convert_letter_to_word(player_move)
 
     if ai_choice == "rock" and player_move == "rock" or ai_choice == "scissors" and player_move == "scissors" or ai_choice == "paper" and player_move == "paper":
         print(f"You played \" {player_move} \" the computer played \" {ai_choice} \" it's a tie.\n")
