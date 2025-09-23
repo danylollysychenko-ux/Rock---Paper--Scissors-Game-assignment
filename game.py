@@ -7,16 +7,32 @@ def convert_letter_to_word(letter):
         return "scissors"
     elif letter == "p":
         return "paper"
+    
+def print_series_results(user_wins, comp_wins):
+    print(f"AI won {comp_wins} rounds.")
+    print(f"You won {user_wins} rounds.\n")
+
+    if comp_wins > user_wins:
+        print(f"AI won.")
+    elif comp_wins < user_wins:
+        print("You won.")
+    else:
+        print("It's a tie.")
+
+def determine_outcome(user, comp):
+    pass
+
+def print_round_results(user, comp, result):
+    pass
 
 def get_valid_input():
     pass
 
+comp_moves = ["r", "s", "p"]
 player_score = 0
 ai_score = 0
 
 for i in range(5):
-    comp_moves = ["r", "s", "p"]
-    ai_choice = random.choice(comp_moves)
     while True:
         print(f"Round {i+1}")
         player_move = input("Enter r, p, s: ").strip().lower()
@@ -27,10 +43,10 @@ for i in range(5):
         else:
             break
 
-    
+    ai_choice = random.choice(comp_moves)
     ai_choice = convert_letter_to_word(ai_choice)
     player_move = convert_letter_to_word(player_move)
-
+    
     if ai_choice == "rock" and player_move == "rock" or ai_choice == "scissors" and player_move == "scissors" or ai_choice == "paper" and player_move == "paper":
         print(f"You played \" {player_move} \" the computer played \" {ai_choice} \" it's a tie.\n")
 
@@ -42,12 +58,4 @@ for i in range(5):
         print(f"You played \" {player_move} \" the computer played \" {ai_choice} \" you won.\n")
         player_score += 1
 
-print(f"AI won {ai_score} rounds.")
-print(f"You won {player_score} rounds.\n")
-
-if ai_score > player_score:
-    print(f"AI won.")
-elif ai_score < player_score:
-    print("You won.")
-else:
-    print("It's a tie.")
+print_series_results(player_score, ai_score)
